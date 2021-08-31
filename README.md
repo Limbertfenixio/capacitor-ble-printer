@@ -1,6 +1,6 @@
 # capacitor-ble-printer
 
-ble printer
+Capacitor plugin for Zebra printers with Bluetooth.
 
 ## Install
 
@@ -9,11 +9,180 @@ npm install capacitor-ble-printer
 npx cap sync
 ```
 
+## Android
+Add the following to your AndroidManifest.xml
+```
+<uses-permission android:name="android.permission.BLUETOOTH"/>
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+```
+
+## Usage
+You can send data in ZPL Zebra
+
+```ts
+import { ZPLPrinter } from 'capacitor-ble-printer'
+
+//Bounded Devices
+ZPLPrinter.listenPrinters().then(value => {
+    console.log(value.devices);
+});
+
+//Print Text
+var printText = "^XA"
+	+ "^FO20,20^A0N,25,25^FDThis is a ZPL test.^FS"
+	+ "^XZ";
+
+var printerOpts: PrinterOptions = {
+    macAddress: macAddressPrinter,
+    printText: printText
+}
+
+ZPLPrinter.print(printerOpts).then(_ => {
+    console.log("Printer Ok!")
+}
+```
+
 ## API
 
-<docgen-index></docgen-index>
+<docgen-index>
+
+* [`print(...)`](#print)
+* [`listenPrinters()`](#listenprinters)
+* [`openBluetoothSettings()`](#openbluetoothsettings)
+* [`enableBluetooth()`](#enablebluetooth)
+* [`getStatusPrinter(...)`](#getstatusprinter)
+* [`getZPLFromImage(...)`](#getzplfromimage)
+* [Interfaces](#interfaces)
+
+</docgen-index>
 
 <docgen-api>
-<!-- run docgen to generate docs from the source -->
-<!-- More info: https://github.com/ionic-team/capacitor-docgen -->
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### print(...)
+
+```typescript
+print(options: PrinterOptions) => any
+```
+
+You can send data in ZPL Zebra Programing Language
+
+| Param         | Type                                                      |
+| ------------- | --------------------------------------------------------- |
+| **`options`** | <code><a href="#printeroptions">PrinterOptions</a></code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### listenPrinters()
+
+```typescript
+listenPrinters() => any
+```
+
+Discover bonded devices
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### openBluetoothSettings()
+
+```typescript
+openBluetoothSettings() => any
+```
+
+Show the Bluetooth settings on the device
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### enableBluetooth()
+
+```typescript
+enableBluetooth() => any
+```
+
+Enable Bluetooth on the device
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### getStatusPrinter(...)
+
+```typescript
+getStatusPrinter(options: StatusPrinterOptions) => any
+```
+
+You can get a status response from a connected Zebra printer using
+
+| Param         | Type                                                                  |
+| ------------- | --------------------------------------------------------------------- |
+| **`options`** | <code><a href="#statusprinteroptions">StatusPrinterOptions</a></code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### getZPLFromImage(...)
+
+```typescript
+getZPLFromImage(options: ZPLConverterOptions) => any
+```
+
+Get ZPL equivalent code from the base64 Image string
+
+| Param         | Type                                                                |
+| ------------- | ------------------------------------------------------------------- |
+| **`options`** | <code><a href="#zplconverteroptions">ZPLConverterOptions</a></code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### Interfaces
+
+
+#### PrinterOptions
+
+| Prop             | Type                | Description                     |
+| ---------------- | ------------------- | ------------------------------- |
+| **`macAddress`** | <code>string</code> | Identifier of the remote device |
+| **`printText`**  | <code>string</code> | text to print                   |
+
+
+#### BluetoothDevices
+
+| Prop             | Type                | Description                     |
+| ---------------- | ------------------- | ------------------------------- |
+| **`name`**       | <code>string</code> | Name of the remote device       |
+| **`macAddress`** | <code>string</code> | Identifier of the remote device |
+| **`id`**         | <code>string</code> |                                 |
+| **`class`**      | <code>string</code> |                                 |
+
+
+#### StatusPrinterOptions
+
+| Prop             | Type                | Description                     |
+| ---------------- | ------------------- | ------------------------------- |
+| **`macAddress`** | <code>string</code> | Identifier of the remote device |
+
+
+#### ZPLConverterOptions
+
+| Prop                      | Type                 | Description                               |
+| ------------------------- | -------------------- | ----------------------------------------- |
+| **`base64Image`**         | <code>string</code>  | base64 Image string                       |
+| **`blacknessPercentage`** | <code>number</code>  | Want to add header/footer ZPL code or not |
+| **`addHeaderFooter`**     | <code>boolean</code> | Want to add header/footer ZPL code or not |
+
 </docgen-api>

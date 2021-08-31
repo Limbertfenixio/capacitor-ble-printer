@@ -13,14 +13,14 @@
     "ios/Plugin/",
     "CapacitorBlePrinter.podspec"
   ],
-  "author": "lim@example.com",
+  "author": "limbertfenixio@gmail.com",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/example.git"
+    "url": "git+https://github.com/Limbertfenixio/capacitor-ble-printer.git"
   },
   "bugs": {
-    "url": "https://github.com/example/issues"
+    "url": "https://github.com/Limbertfenixio/capacitor-ble-printer/issues"
   },
   "keywords": [
     "capacitor",
