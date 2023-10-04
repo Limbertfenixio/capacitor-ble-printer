@@ -62,7 +62,7 @@ ZPLPrinter.print(printerOpts).then(_ => {
 ### print(...)
 
 ```typescript
-print(options: PrinterOptions) => any
+print(options: PrinterOptions) => Promise<any>
 ```
 
 You can send data in ZPL Zebra Programing Language
@@ -71,7 +71,7 @@ You can send data in ZPL Zebra Programing Language
 | ------------- | --------------------------------------------------------- |
 | **`options`** | <code><a href="#printeroptions">PrinterOptions</a></code> |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;any&gt;</code>
 
 --------------------
 
@@ -79,12 +79,12 @@ You can send data in ZPL Zebra Programing Language
 ### listenPrinters()
 
 ```typescript
-listenPrinters() => any
+listenPrinters() => Promise<{ devices: BluetoothDevices[]; }>
 ```
 
 Discover bonded devices
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;{ devices: BluetoothDevices[]; }&gt;</code>
 
 --------------------
 
@@ -92,12 +92,12 @@ Discover bonded devices
 ### openBluetoothSettings()
 
 ```typescript
-openBluetoothSettings() => any
+openBluetoothSettings() => Promise<any>
 ```
 
 Show the Bluetooth settings on the device
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;any&gt;</code>
 
 --------------------
 
@@ -105,12 +105,12 @@ Show the Bluetooth settings on the device
 ### enableBluetooth()
 
 ```typescript
-enableBluetooth() => any
+enableBluetooth() => Promise<any>
 ```
 
 Enable Bluetooth on the device
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;any&gt;</code>
 
 --------------------
 
@@ -118,7 +118,7 @@ Enable Bluetooth on the device
 ### getStatusPrinter(...)
 
 ```typescript
-getStatusPrinter(options: StatusPrinterOptions) => any
+getStatusPrinter(options: StatusPrinterOptions) => Promise<{ status: string; }>
 ```
 
 You can get a status response from a connected Zebra printer using
@@ -127,7 +127,7 @@ You can get a status response from a connected Zebra printer using
 | ------------- | --------------------------------------------------------------------- |
 | **`options`** | <code><a href="#statusprinteroptions">StatusPrinterOptions</a></code> |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;{ status: string; }&gt;</code>
 
 --------------------
 
@@ -135,7 +135,7 @@ You can get a status response from a connected Zebra printer using
 ### getZPLFromImage(...)
 
 ```typescript
-getZPLFromImage(options: ZPLConverterOptions) => any
+getZPLFromImage(options: ZPLConverterOptions) => Promise<{ zplCode: string; }>
 ```
 
 Get ZPL equivalent code from the base64 Image string
@@ -144,7 +144,7 @@ Get ZPL equivalent code from the base64 Image string
 | ------------- | ------------------------------------------------------------------- |
 | **`options`** | <code><a href="#zplconverteroptions">ZPLConverterOptions</a></code> |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;{ zplCode: string; }&gt;</code>
 
 --------------------
 
